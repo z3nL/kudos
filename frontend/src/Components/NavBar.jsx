@@ -1,6 +1,6 @@
 import '../CSS/NavBar.css'
 
-const NavBar = ({ toggleModal }) => {
+const NavBar = ({ toggleAddingBoard }) => {
     return (
         <>
         
@@ -19,7 +19,7 @@ const NavBar = ({ toggleModal }) => {
                 <button>Inspiration</button>
             </form>
 
-            <button onClick={toggleModal}>Create New</button>
+            <button onClick={toggleAddingBoard}>Create New</button>
         </section>
 
         </>

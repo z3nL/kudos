@@ -13,20 +13,21 @@ const PORT = 3000;
 // Returns list of all existing boards in database.
 // If no boards exist, a JSON containing a boolean and message indicating as such is returned
 app.get('/', async (req, res) => {
-    try {
-        const foundBoards = await prisma.board.findMany();   
+    return res.status(200).json('foundBoards');
+    // try {
+    //     const foundBoards = await prisma.board.findMany();   
 
-        if (foundBoards.length > 0)
-            return res.status(200).json(foundBoards);
+    //     if (foundBoards.length > 0)
+    //         return res.status(200).json(foundBoards);
 
-        else
-            return res.status(200).send({ empty: true, message : 'No boards here! Try making one.' });
-    } 
+    //     else
+    //         return res.status(200).send({ empty: true, message : 'No boards here! Try making one.' });
+    // } 
     
-    catch (error) {
-        console.error(error);
-        return res.status(500).json({ error : error });
-    }
+    // catch (error) {
+    //     console.error(error);
+    //     return res.status(500).json({ error : error });
+    // }
 });
 
 // POST /boards
