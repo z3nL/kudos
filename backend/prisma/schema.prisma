@@ -15,16 +15,19 @@ datasource db {
 }
 
 model Board {
-  id          Int   @id @default(autoincrement())
-  imageSrc    String
+  boardID     Int     @id @default(autoincrement())
   title       String
   category    String
+  author      String
+  desc        String
 }
 
 model Kudo {
-  id            Int   @id @default(autoincrement())
+  kudoID        Int     @id @default(autoincrement())
+  boardID       Int
   title         String
   description   String
-  gifSrc        String
+  gifSource     String
   owner         String
+  voteCount     Int     @default(0)
 }

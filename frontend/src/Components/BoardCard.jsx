@@ -8,6 +8,8 @@ const BoardCard = () => {
             <img src="/src/assets/react.svg" />
             <h3>Title</h3>
             <p><b>Category</b></p>
+            <p><b>Author: </b>Author</p>
+            <p><b>Description: </b>Desc</p>
             <div className='boardCardButtons'>
                 <button>View Board</button>
                 <button>Delete Board</button>
