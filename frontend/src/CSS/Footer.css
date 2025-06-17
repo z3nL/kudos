@@ -1,0 +1,12 @@
+footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    border-top: 1px solid white;
+}
+
+@media (prefers-color-scheme: light) {
+    footer { 
+        border-top: 1px solid #242424; 
+    }
+}

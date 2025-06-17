@@ -1,0 +1,34 @@
+#AddBoardModal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+#AddBoardModalContent {
+    display: flex;
+    flex-flow: column;
+    gap: 30px;
+    min-width: 300px;
+    width: 30%;
+    height: 40%;
+    overflow: scroll;
+
+    padding: 30px;
+    background-color: #242424;
+    border: 1px solid white;
+    border-radius: 3px;
+}
+
+@media (prefers-color-scheme: light) {
+    #AddBoardModalContent {
+        border: 1px solid #242424;
+        background-color: #8ebbd4;
+    }
+}

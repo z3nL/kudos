@@ -1,0 +1,10 @@
+header {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+#smiley {
+    width: 100px;
+}
