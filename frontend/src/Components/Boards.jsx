@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useContext } from 'react';
 
 import BoardCard from './BoardCard'
@@ -12,6 +12,7 @@ const Boards = () => {
     // Use the boards state and its setter to load data and map content
     const { boards, setBoards } = useContext(boardsContext);
 
+    // Initialize display
     useEffect( () => {
         loadBoards(setBoards);
     }, []);
@@ -23,11 +24,13 @@ const Boards = () => {
                 return (
                         <BoardCard key={board.boardID}
                             boardID={board.boardID} title={board.title} category={board.category} 
-                            author={board.author} desc={board.desc} 
+                            author={board.author} desc={board.desc}
                         />
                 )
             })
         }
+
+        {/* If boards contains bool empty, then it also contains a message to indicate as such */}
         { boards.empty &&
             <p>{boards.message}</p>
         }

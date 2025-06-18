@@ -30,6 +30,6 @@ const deleteBoardFromDB = (boardID) => {
 // Adds a new board to the database and subsequently appends it to the boards state
 export const addBoard = (boardData, boards, setBoards) => {
     axios.post('http://localhost:3000/boards', boardData)
-        .then((createdBoard) => {setBoards([...boards, createdBoard.data])})
+        .then((createdBoard) => {console.log(createdBoard.data); setBoards([...boards, createdBoard.data])})
         .catch((error) => {console.log(error)})
 }
