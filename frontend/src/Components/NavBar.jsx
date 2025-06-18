@@ -27,6 +27,7 @@ const NavBar = ({ toggleAddingBoard }) => {
 
     const handleClear = () => {
         setSearchContent('');
+        handleFilter('');
     }
 
     // TODO Stretch: Intersect search and filter operations using states
