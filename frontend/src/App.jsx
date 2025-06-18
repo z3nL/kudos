@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Routes, Route, BrowserRouter } from "react-router"
 
 import boardsContext from './Utils/boardsContext.js'
@@ -33,8 +33,6 @@ function App() {
       isSearchActive, setSearchActivity, 
       boardsCache, setBoardsCache,
       }} >
-      
-    <Header />
     
     {isAddingBoard && <AddBoard toggleAddingBoard={toggleAddingBoard} />}
 
@@ -43,12 +41,18 @@ function App() {
 
         <Route path='/' element={
           <>
+          <Header />
           <NavBar toggleAddingBoard={toggleAddingBoard} />
           <Boards />
           </>
         } />
 
-        <Route path='*' element={<NotFound />} />
+        <Route path='*' element={
+          <>
+          <Header />
+          <NotFound />
+          </>
+        } />
 
       </Routes>
     </BrowserRouter>
