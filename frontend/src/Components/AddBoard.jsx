@@ -32,9 +32,9 @@ const AddBoard = ({ toggleAddingBoard }) => {
                 <input name="boardTitle" type="text" placeholder="Title" required/>
                 <select name="categoryDropdown" defaultValue={""} required>
                     <option value="" disabled>Select a Category</option>
-                    <option value="celebration">Celebration</option>
-                    <option value="thankyou">Thank You</option>
-                    <option value="inspiration">Inspiration</option>
+                    <option value="Celebration">Celebration</option>
+                    <option value="Thank You">Thank You</option>
+                    <option value="Inspiration">Inspiration</option>
                 </select>
                 <input name="boardAuthor" type="text" placeholder="Author" required/>
                 <input name="boardDescription" type="text" placeholder="Description" required/>
