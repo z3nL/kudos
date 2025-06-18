@@ -1,5 +1,8 @@
-import { useState } from 'react'
-import { Routes, Route, BrowserRouter, Link } from "react-router"
+import { useEffect, useState } from 'react'
+import { Routes, Route, BrowserRouter } from "react-router"
+
+import boardsContext from './Utils/boardsContext.js'
+
 import './App.css'
 
 import AddBoard from './Components/AddBoard'
@@ -14,16 +17,21 @@ function App() {
   const [isAddingBoard, setIsAddingBoard] = useState(false);
   const toggleAddingBoard = () => {setIsAddingBoard(!isAddingBoard)};
 
+  // Stores kudo boards with setter to append/delete from them
+  const [boards, setBoards] = useState([]);
+
   return (
-    <>
+    // Use a context provider that includes the boards state and its setter
+    <boardsContext.Provider value={{boards, setBoards}} >
+      
     <Header />
+    {isAddingBoard && <AddBoard toggleAddingBoard={toggleAddingBoard} />}
 
     <BrowserRouter>
       <Routes>
 
         <Route path='/' element={
           <>
-          {isAddingBoard && <AddBoard/>}
           <NavBar toggleAddingBoard={toggleAddingBoard} />
           <Boards />
           </>
@@ -37,7 +45,8 @@ function App() {
     <footer>
       <h3>Zen L // CodePath 2025</h3>
     </footer>
-    </>
+    
+    </boardsContext.Provider>
   )
 }
 

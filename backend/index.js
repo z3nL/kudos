@@ -5,7 +5,7 @@ const cors = require('cors');
 const prisma = new PrismaClient();
 const app = express();
     app.use(express.json());
-    app.use(cors);
+    app.use(cors());
 
 const PORT = 3000;
 
@@ -13,21 +13,20 @@ const PORT = 3000;
 // Returns list of all existing boards in database.
 // If no boards exist, a JSON containing a boolean and message indicating as such is returned
 app.get('/', async (req, res) => {
-    return res.status(200).json('foundBoards');
-    // try {
-    //     const foundBoards = await prisma.board.findMany();   
+    try {
+        const foundBoards = await prisma.board.findMany();   
 
-    //     if (foundBoards.length > 0)
-    //         return res.status(200).json(foundBoards);
+        if (foundBoards.length > 0)
+            return res.status(200).json(foundBoards);
 
-    //     else
-    //         return res.status(200).send({ empty: true, message : 'No boards here! Try making one.' });
-    // } 
+        else
+            return res.status(200).send({ empty: true, message : 'No boards here! Try making one.' });
+    } 
     
-    // catch (error) {
-    //     console.error(error);
-    //     return res.status(500).json({ error : error });
-    // }
+    catch (error) {
+        console.error(error);
+        return res.status(500).json({ error : error });
+    }
 });
 
 // POST /boards
@@ -37,7 +36,6 @@ app.post('/boards', async (req, res) => {
     const { title, category, author, desc } = req.body
 
     try {
-        console.log(`Incoming request body: ${req.body}`);
         const newBoard = await prisma.board.create({
             data: {
                 title, category, author, desc
@@ -55,6 +53,7 @@ app.post('/boards', async (req, res) => {
 
 // DELETE /boards/:boardID
 // Deletes a board in the database corresponding to the provided boardID
+// Also deletes any kudo linked to it by boardID
 // Returns JSON containing the removed board's info
 app.delete('/boards/:boardID', async (req, res) => { 
     const { boardID } = req.params;
@@ -63,6 +62,10 @@ app.delete('/boards/:boardID', async (req, res) => {
         const deletedBoard = await prisma.board.delete({
             where: { boardID : parseInt(boardID) }
         });
+
+        await prisma.kudo.deleteMany({
+            where: { boardID : parseInt(boardID) }
+        })
 
         return res.status(200).json({ deletedBoard });
     } 
