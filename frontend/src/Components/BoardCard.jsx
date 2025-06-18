@@ -9,7 +9,7 @@ const BoardCard = ({ boardID, title, category, author, desc }) => {
     // Access necessary board-releated states/setters from boardsContext
     const { boardsOnDisplay, setBoardsOnDisplay } = useContext(boardsContext);
 
-    // Helper to make every board image random
+    // Helper to make every board image random; "170" has no significance to it
     const min = Math.ceil(170);
     const getRandomizerSeed = () => {
         return Math.floor(Math.random() * min + min);
