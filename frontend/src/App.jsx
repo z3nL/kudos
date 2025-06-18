@@ -17,14 +17,25 @@ function App() {
   const [isAddingBoard, setIsAddingBoard] = useState(false);
   const toggleAddingBoard = () => {setIsAddingBoard(!isAddingBoard)};
 
-  // Stores kudo boards with setter to append/delete from them
-  const [boards, setBoards] = useState([]);
+  // Stores kudo boards with setter to append/delete from them in display
+  const [boardsOnDisplay, setBoardsOnDisplay] = useState([]);
+
+  // Tracks if a search is active
+  const [isSearchActive, setSearchActivity] = useState(false);
+  
+  // Stores cache of existing boards to preserve display post search/filter
+  const [boardsCache, setBoardsCache] = useState([]);
 
   return (
-    // Use a context provider that includes the boards state and its setter
-    <boardsContext.Provider value={{boards, setBoards}} >
+    // Use a context provider that includes board-related states/setters
+    <boardsContext.Provider value={{
+      boardsOnDisplay, setBoardsOnDisplay, 
+      isSearchActive, setSearchActivity, 
+      boardsCache, setBoardsCache,
+      }} >
       
     <Header />
+    
     {isAddingBoard && <AddBoard toggleAddingBoard={toggleAddingBoard} />}
 
     <BrowserRouter>

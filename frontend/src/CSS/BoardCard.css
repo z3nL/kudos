@@ -1,16 +1,24 @@
 .BoardCard {
     width: 200px;
-    height: 300px;
+    height: 330px;
     padding: 30px;
     border: 1px solid white;
+
+    display: flex;
+    flex-flow: column;
+}
+
+.boardCardContent {
+    margin: 5px 0 5px 0;
 }
 
 .boardCardButtons {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: row;
     justify-content: center;
     column-gap: 15px;
     row-gap: 5px;
+    margin-bottom: 5px;
 }
 
 @media (prefers-color-scheme: light) {

@@ -9,27 +9,30 @@ import boardsContext from '../Utils/boardsContext';
 import '../CSS/Boards.css'
 
 const Boards = () => {
-    // Use the boards state and its setter to load data and map content
-    const { boards, setBoards } = useContext(boardsContext);
+    // Access necessary board-releated states/setters from boardsContext
+    const { boardsOnDisplay, setBoardsOnDisplay, setBoardsCache } = useContext(boardsContext);
 
+    // Initialize display
     useEffect( () => {
-        loadBoards(setBoards);
+        loadBoards(setBoardsOnDisplay, setBoardsCache);
     }, []);
 
     return (
         <section id="Boards">
-        { !boards.empty &&
-            boards.map(board => {
+        { !boardsOnDisplay.empty &&
+            boardsOnDisplay.map(board => {
                 return (
                         <BoardCard key={board.boardID}
                             boardID={board.boardID} title={board.title} category={board.category} 
-                            author={board.author} desc={board.desc} 
+                            author={board.author} desc={board.desc}
                         />
                 )
             })
         }
-        { boards.empty &&
-            <p>{boards.message}</p>
+
+        {/* If boards contains bool empty, then it also contains a message to indicate as such */}
+        { boardsOnDisplay.empty &&
+            <p>{boardsOnDisplay.message}</p>
         }
         </section>
     )
