@@ -1,9 +1,12 @@
+// TODO UNCOMMENT WHEN PUSHING const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000'
+const baseUrl = 'http://localhost:3000';
+
 // Leverage axios to help with more complex requests
 import axios from 'axios'
 
 // Loads boards from database
 export const loadBoards = (setBoardsOnDisplay, setBoardsCache) => {
-    fetch("http://localhost:3000/")
+    fetch(`${baseUrl}/`)
         .then((res) => res.json())
         .then((boards) => {setBoardsOnDisplay(boards); setBoardsCache(boards)})
 }
@@ -21,7 +24,7 @@ export const deleteBoard = (boardID, boardsOnDisplay, setBoardsOnDisplay) => {
 
 // Helper function to remove the board from database
 const deleteBoardFromDB = (boardID) => {
-    fetch(`http://localhost:3000/boards/${boardID}`, {method: 'DELETE'})
+    fetch(`${baseUrl}/boards/${boardID}`, {method: 'DELETE'})
         .then((res) => res.json())
         .then((deletedBoard) => console.log(deletedBoard))
         .catch((error) => {console.log(error)})
@@ -29,7 +32,7 @@ const deleteBoardFromDB = (boardID) => {
 
 // Adds a new board to the database and subsequently appends it to the boards state
 export const addBoard = (newBoardData, boardsOnDisplay, setBoardsOnDisplay, isSearchActive, boardsCache, setBoardsCache) => {
-    axios.post('http://localhost:3000/boards', newBoardData)
+    axios.post(`${baseUrl}/boards`, newBoardData)
         .then((createdBoard) => {
             console.log(createdBoard.data); 
             // Only update the boards on display if no search is active
@@ -55,23 +58,30 @@ export const searchBoards = (query, setBoardsOnDisplay, boardsCache) => {
 
 }
 
+const Options = {
+    RECENT : "recent",
+    CELEBRATION : "Celebration",
+    THANKYOU : "Thank You",
+    INSPIRATION : "Inspiration"
+};
+
 // Filters the displayed boards by provided option and updates the display as such
 export const filterBoards = (option, setBoardsOnDisplay, boardsCache) => {
     console.log("Filtering by option " + option);
     switch (option) {
-        case "recent":
+        case Options.RECENT:
             setBoardsOnDisplay(boardsCache.toSorted((a, b) => b.boardID - a.boardID).slice(0, 6));
             break;
 
-        case "Celebration":
+        case Options.CELEBRATION:
             setBoardsOnDisplay(boardsCache.filter((board) => board.category == "Celebration"));
             break;
 
-        case "Thank You":
+        case Options.THANKYOU:
             setBoardsOnDisplay(boardsCache.filter((board) => board.category == "Thank You"));
             break;
 
-        case "Inspiration":
+        case Options.INSPIRATION:
             setBoardsOnDisplay(boardsCache.filter((board) => board.category == "Inspiration"));
             break;
 

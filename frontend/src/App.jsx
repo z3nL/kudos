@@ -32,7 +32,7 @@ function App() {
       boardsOnDisplay, setBoardsOnDisplay, 
       isSearchActive, setSearchActivity, 
       boardsCache, setBoardsCache,
-      }} >
+    }} >
     
     {isAddingBoard && <AddBoard toggleAddingBoard={toggleAddingBoard} />}
 
