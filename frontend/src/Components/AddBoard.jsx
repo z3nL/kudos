@@ -6,8 +6,8 @@ import boardsContext from '../Utils/boardsContext';
 import '../CSS/AddBoard.css'
 
 const AddBoard = ({ toggleAddingBoard }) => {   
-    // Use the boards state and its setter in addBoard
-    const { boards, setBoards } = useContext(boardsContext);
+    // Access necessary board-releated states/setters from boardsContext
+    const { boardsOnDisplay, setBoardsOnDisplay, isSearchActive, boardsCache, setBoardsCache } = useContext(boardsContext);
 
     const handleSubmit = (formData) => {
         toggleAddingBoard();
@@ -19,7 +19,7 @@ const AddBoard = ({ toggleAddingBoard }) => {
             desc : formData.get('boardDescription')
         };
 
-        addBoard(boardData, boards, setBoards);
+        addBoard(boardData, boardsOnDisplay, setBoardsOnDisplay, isSearchActive, boardsCache, setBoardsCache);
     }
 
     return (
