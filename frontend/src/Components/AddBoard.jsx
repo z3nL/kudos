@@ -36,7 +36,7 @@ const AddBoard = ({ toggleAddingBoard }) => {
                     <option value="Thank You">Thank You</option>
                     <option value="Inspiration">Inspiration</option>
                 </select>
-                <input name="boardAuthor" type="text" placeholder="Author" required/>
+                <input name="boardAuthor" type="text" placeholder="Author (optional)" />
                 <input name="boardDescription" type="text" placeholder="Description" required/>
                 <button type="submit">Create Board</button>
             </form>

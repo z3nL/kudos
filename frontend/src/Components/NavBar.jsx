@@ -22,6 +22,9 @@ const NavBar = ({ toggleAddingBoard }) => {
         if (searchContent != '') {
             setSearchActivity(true);
         }
+        else {
+            setSearchActivity(false);
+        }
         searchBoards(searchContent, setBoardsOnDisplay, boardsCache);
     }, [searchContent])
 

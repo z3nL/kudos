@@ -23,7 +23,9 @@ const BoardCard = ({ boardID, title, category, author, desc }) => {
                 <img src={`https://picsum.photos/200/150?random=${getRandomizerSeed()}`} />
                 <h3 className='boardCardContent'>{title}</h3>
                 <p className='boardCardContent'><b>{category}</b></p>
-                <p className='boardCardContent'><b>Author: </b>{author}</p>
+                { author &&
+                    <p className='boardCardContent'><b>Author: </b>{author}</p>
+                }
                 <p className='boardCardContent'><b>Description: </b>{desc}</p>
                 <div className='boardCardButtons'>
                     <Link to={`/boards/${boardID}`}>
