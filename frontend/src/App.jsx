@@ -62,7 +62,7 @@ function App() {
         <Route path='/' element={
           <>
           <Header />
-          <button onClick={toggleColorTheme}>Toggle {colorTheme === LIGHT ? DARK : LIGHT} mode </button>
+          <button onClick={() => toggleColorTheme()}>Toggle {colorTheme === LIGHT ? DARK : LIGHT} mode </button>
           <NavBar toggleAddingBoard={toggleAddingBoard} />
           <Boards />
           </>
@@ -71,7 +71,7 @@ function App() {
         <Route path='/boards/*' element={
           <>
           <Header />
-          <button onClick={toggleColorTheme}>Toggle {colorTheme === LIGHT ? DARK : LIGHT} mode </button>
+          <button onClick={() => toggleColorTheme()}>Toggle {colorTheme === LIGHT ? DARK : LIGHT} mode </button>
           <Kudos />
           </>
         } />
