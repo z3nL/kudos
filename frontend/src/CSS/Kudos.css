@@ -1,3 +1,11 @@
+:root[colorTheme='light'] {
+    --border-color: #242424;
+}
+
+:root[colorTheme='dark'] {
+    --border-color: white;
+}
+
 #Kudos {
     display: flex;
     flex-flow: row wrap;
@@ -11,14 +19,7 @@
 
 .boardHeader {
     padding: 10px 0 10px 0;
-    margin-bottom: 10px;
-    border-top: 1px solid white;
-    border-bottom: 1px solid white;
-}
-
-@media (prefers-color-scheme: light) {
-    .boardHeader {
-        border-top: 1px solid #242424;
-        border-bottom: 1px solid #242424;
-    }
+    margin: 10px 0 10px 0;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
 }

@@ -49,7 +49,7 @@ const NavBar = ({ toggleAddingBoard }) => {
         
         <section id="NavBar">
             <form id="SearchBar" onSubmit={(event) => event.preventDefault()}>
-                <input type="text" value={searchContent} onChange={handleSearchChange} placeholder="Search for a board" />
+                <input type="text" name="searchInput" value={searchContent} onChange={handleSearchChange} placeholder="Search for a board" />
                 <button type="submit">Search</button>
                 <button onClick={handleClear}>Clear</button>
             </form>

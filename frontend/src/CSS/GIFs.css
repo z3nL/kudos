@@ -1,3 +1,11 @@
+:root[colorTheme='light'] {
+    --border-color: #242424;
+}
+
+:root[colorTheme='dark'] {
+    --border-color: white;
+}
+
 .gifSearchResults {
     display: flex;
     flex-flow: row wrap;
@@ -6,7 +14,7 @@
 
 .gifEmbedModal,
 .gifEmbedCard {
-    border: 1px solid white;
+    border: 1px solid var(--border-color);
     object-fit: cover;
 }
 
@@ -18,11 +26,4 @@
 .gifEmbedCard {
     width: 200px;
     height: 100px;
-}
-
-@media (prefers-color-scheme: light) {
-    .gifEmbedModal,
-    .gifEmbedCard {
-        border: 1px solid #242424;
-    }
 }

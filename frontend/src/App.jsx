@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Routes, Route, BrowserRouter } from "react-router"
 
 import boardsContext from './Utils/boardsContext.js'
@@ -14,6 +14,19 @@ import NotFound from './Components/NotFound'
 import './CSS/Footer.css' // No need for an isolated component
 
 function App() {
+  // Manages color theme; app defaults to light mode
+  const LIGHT = 'light', DARK = 'dark';
+  const [colorTheme, setColorTheme] = useState(localStorage.getItem('colorTheme') || LIGHT);
+
+  useEffect(() => {
+    document.documentElement.setAttribute('colorTheme', colorTheme);
+    localStorage.setItem('colorTheme', colorTheme);
+  }, [colorTheme])
+
+  const toggleColorTheme = () => {
+    setColorTheme(colorTheme === LIGHT ? DARK : LIGHT);
+  }
+
   // Tracks if add board modal should be open
   const [isAddingBoard, setIsAddingBoard] = useState(false);
   const toggleAddingBoard = () => {setIsAddingBoard(!isAddingBoard)};
@@ -49,6 +62,7 @@ function App() {
         <Route path='/' element={
           <>
           <Header />
+          <button onClick={toggleColorTheme}>Toggle {colorTheme === LIGHT ? DARK : LIGHT} mode </button>
           <NavBar toggleAddingBoard={toggleAddingBoard} />
           <Boards />
           </>
@@ -57,6 +71,7 @@ function App() {
         <Route path='/boards/*' element={
           <>
           <Header />
+          <button onClick={toggleColorTheme}>Toggle {colorTheme === LIGHT ? DARK : LIGHT} mode </button>
           <Kudos />
           </>
         } />

@@ -1,8 +1,16 @@
+:root[colorTheme='light'] {
+    --border-color: #242424;
+}
+
+:root[colorTheme='dark'] {
+    --border-color: white;
+}
+
 .BoardCard {
     width: 200px;
     height: 350px;
     padding: 30px;
-    border: 1px solid white;
+    border: 1px solid var(--border-color);
     border-radius: 3px;
 
     display: flex;
@@ -10,7 +18,7 @@
 }
 
 .boardImage {
-    border: 1px solid white;
+    border: 1px solid var(--border-color);
     border-radius: 3px;
 }
 
@@ -25,14 +33,4 @@
     column-gap: 15px;
     row-gap: 5px;
     margin-bottom: 5px;
-}
-
-@media (prefers-color-scheme: light) {
-    .boardImage {
-        border: 1px solid #242424;
-    }
-
-    .BoardCard {
-        border: 1px solid #242424;
-    }
 }

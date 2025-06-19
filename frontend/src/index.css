@@ -1,11 +1,27 @@
+:root[colorTheme='light'] {
+  --foreground-color: #242424;
+  --background-color: #8ebbd4;
+  --header-hover-color: #3239bc;
+  --button-bg-color: #f9f9f9;
+  --input-bg-color: #cbdee9;
+}
+
+:root[colorTheme='dark'] {
+  --foreground-color: rgba(255, 255, 255, 0.87);
+  --background-color: #242424;
+  --header-hover-color:#7679b4;
+  --button-bg-color: #1a1a1a;
+  --input-bg-color: #363742;
+}
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: var(--foreground-color);
+  background-color: var(--background-color);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -15,11 +31,11 @@
 
 a {
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.87);
+  color: var(--foreground-color);
   text-decoration: inherit;
 }
 a:hover {
-  color: #7679b4;
+  color: var(--header-hover-color);
 }
 
 body {
@@ -43,7 +59,8 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--button-bg-color);
+  color: var(--foreground-color);
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -55,15 +72,16 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #242424;
-    background-color: #8ebbd4;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+input {
+  border: 1px solid transparent;
+  border-radius: 3px;
+  background-color: var(--input-bg-color);
 }
+::placeholder { color: var(--foreground-color);  }
+
+select {
+  border: 1px solid transparent;
+  border-radius: 3px;
+  background-color: #365e65;
+}
+option { color: var(--foreground-color);  }
