@@ -1,6 +1,8 @@
 // TODO UNCOMMENT WHEN PUSHING const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000'
 const baseUrl = 'http://localhost:3000';
 
+const giphyKey = import.meta.env.VITE_GIPHY_API_KEY;
+
 // Leverage axios to help with more complex requests
 import axios from 'axios'
 
@@ -46,7 +48,7 @@ export const incrementVoteCount = (activeBoardID, kudoID, kudos, setKudos) => {
         .then((res) => res.json())
         .then((updatedKudo) => {
             console.log(updatedKudo);
-            
+
             // TODO Same index searching question
             const kudoIDs = kudos.map((kudo) => kudo.kudoID);
             const arrayIndex = kudoIDs.indexOf(kudoID);
@@ -54,3 +56,10 @@ export const incrementVoteCount = (activeBoardID, kudoID, kudos, setKudos) => {
         })
         .catch((error) => {console.log(error)})
 }       
+
+export const searchGIFs = (query, setGifSearchResults) => {
+    fetch(`https://api.giphy.com/v1/gifs/search?api_key=${giphyKey}&q=${query}&limit=6`)
+        .then((res) => res.json())
+        .then((response) => { console.log(response.data); setGifSearchResults(response.data)})
+        .catch((error) => {console.log(error)})
+}

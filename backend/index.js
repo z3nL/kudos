@@ -67,7 +67,7 @@ app.delete('/boards/:boardID', async (req, res) => {
             where: { boardID : parseInt(boardID) }
         })
 
-        return res.status(200).json({ deletedBoard });
+        return res.status(200).json(deletedBoard);
     } 
     
     catch (error) {

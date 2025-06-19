@@ -1,0 +1,28 @@
+.gifSearchResults {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 10px;
+}
+
+.gifEmbedModal,
+.gifEmbedCard {
+    border: 1px solid white;
+    object-fit: cover;
+}
+
+.gifEmbedModal {
+    width: 100px;
+    height: 100px;
+}
+
+.gifEmbedCard {
+    width: 200px;
+    height: 100px;
+}
+
+@media (prefers-color-scheme: light) {
+    .gifEmbedModal,
+    .gifEmbedCard {
+        border: 1px solid #242424;
+    }
+}
