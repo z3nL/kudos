@@ -22,7 +22,7 @@ const Kudos = () => {
 
     return (
         <>
-        {isAddingKudo && <AddKudo toggleAddingKudo={toggleAddingKudo}/>}
+        {isAddingKudo && <AddKudo kudos={kudos} setKudos={setKudos} toggleAddingKudo={toggleAddingKudo}/>}
 
         <div className='boardHeader'>
             <h2>{activeBoardTitle}</h2>
@@ -33,7 +33,7 @@ const Kudos = () => {
             {!kudos.empty &&
                 kudos.map((kudo) => {
                     return (
-                        <Kudo key={kudo.kudoID}
+                        <KudoCard key={kudo.kudoID}
                             kudoID={kudo.kudoID} boardID={kudo.boardID}
                             title={title} description={description} gifSource={gifSource} 
                             owner={owner} voteCount={voteCount}
