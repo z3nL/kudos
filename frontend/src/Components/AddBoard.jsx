@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { addBoard } from '../Utils/boardUtils';
 import boardsContext from '../Utils/boardsContext';
 
-import '../CSS/AddBoard.css'
+import '../CSS/AddModal.css'
 
 const AddBoard = ({ toggleAddingBoard }) => {   
     // Access necessary board-releated states/setters from boardsContext
@@ -23,8 +23,8 @@ const AddBoard = ({ toggleAddingBoard }) => {
     }
 
     return (
-        <div id="AddBoardModal" onClick={toggleAddingBoard}>
-            <form id="AddBoardModalContent" 
+        <div id="AddModal" onClick={toggleAddingBoard}>
+            <form id="AddModalContent" 
                 onClick={(event) => {event.stopPropagation()}} 
                 action={handleSubmit}
             >

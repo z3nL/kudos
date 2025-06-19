@@ -1,0 +1,28 @@
+.KudoCard {
+    width: 200px;
+    height: 330px;
+    padding: 30px;
+    border: 1px solid white;
+
+    display: flex;
+    flex-flow: column;
+}
+
+.kudoCardContent {
+    margin: 5px 0 5px 0;
+}
+
+.kudoCardButtons {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    column-gap: 15px;
+    row-gap: 5px;
+    margin-bottom: 5px;
+}
+
+@media (prefers-color-scheme: light) {
+    .KudoCard {
+    border: 1px solid #242424;
+    }
+}

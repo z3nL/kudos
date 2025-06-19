@@ -60,7 +60,7 @@ const NavBar = ({ toggleAddingBoard }) => {
                 <button onClick={() => handleFilter("Inspiration")}>Inspiration</button>
             </form>
 
-            <button onClick={toggleAddingBoard}>Create New</button>
+            <button onClick={toggleAddingBoard}>Create New Board</button>
         </section>
 
         </>
