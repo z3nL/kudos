@@ -1,6 +1,6 @@
 import '../CSS/AddModal.css'
 
-const AddKudo = ({ toggleAddingKudo }) => {
+const AddKudo = ({ kudos, setKudos, toggleAddingKudo }) => {
     return (
         <div id="AddModal" onClick={toggleAddingKudo}>
             <form id='AddModalContent' onClick={(event) => {event.stopPropagation()}}>
