@@ -1,3 +1,13 @@
+:root[colorTheme='light'] {
+    --border-color: #242424;
+    --background-color: #8ebbd4;
+}
+
+:root[colorTheme='dark'] {
+    --border-color: white;
+    --background-color: #242424;
+}
+
 #AddModal {
     display: flex;
     justify-content: center;
@@ -21,14 +31,7 @@
     overflow: scroll;
 
     padding: 30px;
-    background-color: #242424;
-    border: 1px solid white;
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
     border-radius: 3px;
-}
-
-@media (prefers-color-scheme: light) {
-    #AddModalContent {
-        border: 1px solid #242424;
-        background-color: #8ebbd4;
-    }
 }

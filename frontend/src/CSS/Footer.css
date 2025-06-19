@@ -1,12 +1,14 @@
+:root[colorTheme='light'] {
+    --border-color: #242424;
+}
+
+:root[colorTheme='dark'] {
+    --border-color: white;
+}
+
 footer {
     display: flex;
     justify-content: center;
     margin-top: 10px;
-    border-top: 1px solid white;
-}
-
-@media (prefers-color-scheme: light) {
-    footer { 
-        border-top: 1px solid #242424; 
-    }
+    border-top: 1px solid var(--border-color);
 }
