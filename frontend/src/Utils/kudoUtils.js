@@ -10,7 +10,7 @@ import axios from 'axios'
 export const loadKudos = (activeBoardID, setKudos) => {
     fetch(`${baseUrl}/boards/${activeBoardID}`)
         .then((res) => res.json())
-        .then((foundKudos) => {setKudos(foundKudos); console.log(foundKudos)})
+        .then((foundKudos) => {setKudos(foundKudos)})
         .catch((error) => {console.log(error)})
 }
 
@@ -18,7 +18,7 @@ export const loadKudos = (activeBoardID, setKudos) => {
 export const addKudo = (activeBoardID, newKudoData, kudos, setKudos) => {
     axios.post(`${baseUrl}/boards/${activeBoardID}`, newKudoData)
         .then((createdKudo) => {
-            console.log(createdKudo.data);
+            console.log(`Created ${createdKudo.data}`);
             setKudos(kudos.empty? [createdKudo.data] : [...kudos, createdKudo.data])
         })
         .catch((error) => {console.log(error)})
@@ -38,7 +38,7 @@ export const deleteKudo = (activeBoardID, kudoID, kudos, setKudos) => {
 const deleteKudoFromDB = (activeBoardID, kudoID) => {
     fetch(`${baseUrl}/boards/${activeBoardID}/${kudoID}`, {method: 'DELETE'})
         .then((res) => res.json())
-        .then((deletedKudo) => console.log(deletedKudo))
+        .then((deletedKudo) => console.log(`Deleted ${deletedKudo}`))
         .catch((error) => {console.log(error)})
 }
 
@@ -47,8 +47,6 @@ export const incrementVoteCount = (activeBoardID, kudoID, kudos, setKudos) => {
     fetch(`${baseUrl}/boards/${activeBoardID}/${kudoID}`, {method: 'PUT'})
         .then((res) => res.json())
         .then((updatedKudo) => {
-            console.log(updatedKudo);
-
             // TODO Same index searching question
             const kudoIDs = kudos.map((kudo) => kudo.kudoID);
             const arrayIndex = kudoIDs.indexOf(kudoID);
@@ -60,6 +58,6 @@ export const incrementVoteCount = (activeBoardID, kudoID, kudos, setKudos) => {
 export const searchGIFs = (query, setGifSearchResults) => {
     fetch(`https://api.giphy.com/v1/gifs/search?api_key=${giphyKey}&q=${query}&limit=6`)
         .then((res) => res.json())
-        .then((response) => { console.log(response.data); setGifSearchResults(response.data)})
+        .then((response) => { setGifSearchResults(response.data)})
         .catch((error) => {console.log(error)})
 }

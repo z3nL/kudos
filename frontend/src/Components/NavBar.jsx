@@ -35,7 +35,6 @@ const NavBar = ({ toggleAddingBoard }) => {
     // Handles filtering operations
     const handleFilter = (option) => {
         if (option == '') {
-            console.log("Search is set to All");
             setBoardsOnDisplay(boardsCache);
             return;
         }

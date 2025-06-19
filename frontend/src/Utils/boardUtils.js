@@ -26,7 +26,7 @@ export const deleteBoard = (boardID, boardsOnDisplay, setBoardsOnDisplay) => {
 const deleteBoardFromDB = (boardID) => {
     fetch(`${baseUrl}/boards/${boardID}`, {method: 'DELETE'})
         .then((res) => res.json())
-        .then((deletedBoard) => console.log(deletedBoard))
+        .then((deletedBoard) => console.log(`Deleted ${deletedBoard}`))
         .catch((error) => {console.log(error)})
 }
 
@@ -34,7 +34,7 @@ const deleteBoardFromDB = (boardID) => {
 export const addBoard = (newBoardData, boardsOnDisplay, setBoardsOnDisplay, isSearchActive, boardsCache, setBoardsCache) => {
     axios.post(`${baseUrl}/boards`, newBoardData)
         .then((createdBoard) => {
-            console.log(createdBoard.data); 
+            console.log(`Created ${createdBoard.data}`); 
             // Only update the boards on display if no search is active
             if (!isSearchActive) setBoardsOnDisplay([...boardsOnDisplay, createdBoard.data])
             setBoardsCache([...boardsCache, createdBoard.data])
@@ -67,7 +67,6 @@ const Options = {
 
 // Filters the displayed boards by provided option and updates the display as such
 export const filterBoards = (option, setBoardsOnDisplay, boardsCache) => {
-    console.log("Filtering by option " + option);
     switch (option) {
         case Options.RECENT:
             setBoardsOnDisplay(boardsCache.toSorted((a, b) => b.boardID - a.boardID).slice(0, 6));
