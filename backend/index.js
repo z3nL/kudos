@@ -88,7 +88,7 @@ app.get('/boards/:boardID', async (req, res) => {
         });
         
         if (foundKudos.length > 0)
-            return res.status(200).json({ foundKudos });
+            return res.status(200).json(foundKudos);
         
         else
             return res.status(200).json({ empty : true, message : 'No kudos here! Try making one.'});
@@ -115,7 +115,7 @@ app.post('/boards/:boardID', async (req, res) => {
             }
         });
 
-        return res.status(201).json({ newKudo });
+        return res.status(201).json(newKudo);
     }
 
     catch (error) {
@@ -135,7 +135,7 @@ app.delete('/boards/:boardID/:kudoID', async (req, res) => {
             where : { boardID : parseInt(boardID), kudoID : parseInt(kudoID) }
         });
 
-        res.status(200).json({ deletedKudo });
+        res.status(200).json(deletedKudo);
     }
 
     catch (error) {
@@ -162,7 +162,7 @@ app.put('/boards/:boardID/:kudoID', async (req, res) => {
             }
         });
 
-        res.status(200).json({ updatedKudo });
+        res.status(200).json(updatedKudo);
     }
 
     catch (error) {

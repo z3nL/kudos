@@ -3,7 +3,7 @@ import { useState, useEffect, useContext } from 'react'
 import AddKudo  from './AddKudo'
 import KudoCard from './KudoCard'
 
-import { loadKudos }  from '../Utils/kudoUtils.js'
+import { loadKudos, deleteKudo, incrementVoteCount }  from '../Utils/kudoUtils.js'
 import boardsContext from '../Utils/boardsContext';
 
 import '../CSS/Kudos.css'
@@ -20,9 +20,19 @@ const Kudos = () => {
         loadKudos(activeBoardID, setKudos);
     }, [])
 
+    const handleDelete = (activeBoardID, kudoID) => {
+        deleteKudo(activeBoardID, kudoID, kudos, setKudos);
+    }
+
+    const handleIncrement = (activeBoardID, kudoID) => {
+        incrementVoteCount(activeBoardID, kudoID, kudos, setKudos);
+    }
+
     return (
         <>
-        {isAddingKudo && <AddKudo kudos={kudos} setKudos={setKudos} toggleAddingKudo={toggleAddingKudo}/>}
+        {isAddingKudo && 
+            <AddKudo activeBoardID={activeBoardID} kudos={kudos} setKudos={setKudos} toggleAddingKudo={toggleAddingKudo}/>
+        }
 
         <div className='boardHeader'>
             <h2>{activeBoardTitle}</h2>
@@ -34,9 +44,10 @@ const Kudos = () => {
                 kudos.map((kudo) => {
                     return (
                         <KudoCard key={kudo.kudoID}
-                            kudoID={kudo.kudoID} boardID={kudo.boardID}
-                            title={title} description={description} gifSource={gifSource} 
-                            owner={owner} voteCount={voteCount}
+                            kudoID={kudo.kudoID} activeBoardID={kudo.boardID}
+                            title={kudo.title} description={kudo.description} gifSource={kudo.gifSource} 
+                            owner={kudo.owner} voteCount={kudo.voteCount} 
+                            handleDelete={handleDelete} handleIncrement={handleIncrement}
                         />
                     )
                 })

@@ -1,6 +1,6 @@
 .BoardCard {
     width: 200px;
-    height: 330px;
+    height: 350px;
     padding: 30px;
     border: 1px solid white;
 
@@ -23,6 +23,6 @@
 
 @media (prefers-color-scheme: light) {
     .BoardCard {
-    border: 1px solid #242424;
+        border: 1px solid #242424;
     }
 }

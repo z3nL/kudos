@@ -1,15 +1,16 @@
 import '../CSS/KudoCard.css'
 
-const KudoCard = () => {
+// Some mild drilling :|
+const KudoCard = ({ kudoID, activeBoardID, title, description, gifSource, owner, voteCount, handleDelete, handleIncrement }) => {
     return (
         <article className='KudoCard'>
-            <h3>Title</h3>
-            <p>Image here</p>
-            <p>Description</p>
-            <p>Owner</p>
+            <h3>{title}</h3>
+            <p>{gifSource}</p>
+            <p>{description}</p>
+            <p>{owner}</p>
             <div className='kudoCardButtons'>
-                <button>Upvote</button>
-                <button>Delete</button>
+                <button onClick={() => handleIncrement(activeBoardID, kudoID)}>{`Upvote: ${voteCount}`}</button>
+                <button onClick={() => handleDelete(activeBoardID, kudoID)}>Delete</button>
             </div>
         </article>
     )
