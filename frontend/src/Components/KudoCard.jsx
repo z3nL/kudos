@@ -10,7 +10,7 @@ const KudoCard = ({ kudoID, activeBoardID, title, description, gifSource, owner,
                 <video className='gifEmbedCard' src={gifSource} autoPlay loop></video>
             }
             <p>{description}</p>
-            <p>{owner}</p>
+            <p>by {owner}</p>
             <div className='kudoCardButtons'>
                 <button onClick={() => handleIncrement(activeBoardID, kudoID)}>{`Upvote: ${voteCount}`}</button>
                 <button onClick={() => handleDelete(activeBoardID, kudoID)}>Delete</button>

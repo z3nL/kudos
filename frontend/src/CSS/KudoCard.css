@@ -3,6 +3,7 @@
     height: 330px;
     padding: 30px;
     border: 1px solid white;
+    border-radius: 3px;
 
     display: flex;
     flex-flow: column;

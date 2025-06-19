@@ -20,7 +20,7 @@ const BoardCard = ({ boardID, title, category, author, desc }) => {
         <>
 
             <article className="BoardCard">
-                <img src={`https://picsum.photos/200/150?random=${getRandomizerSeed()}`} />
+                <img className="boardImage" src={`https://picsum.photos/200/150?random=${getRandomizerSeed()}`} />
                 <h3 className='boardCardContent'>{title}</h3>
                 <p className='boardCardContent'><b>{category}</b></p>
                 { author &&
