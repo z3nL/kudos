@@ -1,4 +1,4 @@
-#AddBoardModal {
+#AddModal {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,7 +11,7 @@
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-#AddBoardModalContent {
+#AddModalContent {
     display: flex;
     flex-flow: column;
     gap: 30px;
@@ -27,7 +27,7 @@
 }
 
 @media (prefers-color-scheme: light) {
-    #AddBoardModalContent {
+    #AddModalContent {
         border: 1px solid #242424;
         background-color: #8ebbd4;
     }

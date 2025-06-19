@@ -22,6 +22,9 @@ const NavBar = ({ toggleAddingBoard }) => {
         if (searchContent != '') {
             setSearchActivity(true);
         }
+        else {
+            setSearchActivity(false);
+        }
         searchBoards(searchContent, setBoardsOnDisplay, boardsCache);
     }, [searchContent])
 
@@ -35,7 +38,6 @@ const NavBar = ({ toggleAddingBoard }) => {
     // Handles filtering operations
     const handleFilter = (option) => {
         if (option == '') {
-            console.log("Search is set to All");
             setBoardsOnDisplay(boardsCache);
             return;
         }
@@ -60,7 +62,7 @@ const NavBar = ({ toggleAddingBoard }) => {
                 <button onClick={() => handleFilter("Inspiration")}>Inspiration</button>
             </form>
 
-            <button onClick={toggleAddingBoard}>Create New</button>
+            <button onClick={toggleAddingBoard}>Create New Board</button>
         </section>
 
         </>
