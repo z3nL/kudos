@@ -18,7 +18,7 @@ export const addKudo = (activeBoardID, newKudoData, kudos, setKudos) => {
     axios.post(`${baseUrl}/boards/${activeBoardID}`, newKudoData)
         .then((createdKudo) => {
             console.log(`Created ${createdKudo.data}`);
-            setKudos(kudos.empty? [createdKudo.data] : [...kudos, createdKudo.data])
+            setKudos(kudos.empty ? [createdKudo.data] : [...kudos, createdKudo.data])
         })
         .catch((error) => {console.log(error)})
 }

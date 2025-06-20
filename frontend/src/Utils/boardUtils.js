@@ -1,4 +1,5 @@
-const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000'
+// TODO UNCOMMENT WHEN PUSHING const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000'
+const baseUrl = 'http://localhost:3000';
 
 // Leverage axios to help with more complex requests
 import axios from 'axios'
@@ -34,9 +35,13 @@ export const addBoard = (newBoardData, boardsOnDisplay, setBoardsOnDisplay, isSe
     axios.post(`${baseUrl}/boards`, newBoardData)
         .then((createdBoard) => {
             console.log(`Created ${createdBoard.data}`); 
+            
+            // Check if there aren't actually any boards loaded
+            const empty = boardsOnDisplay.empty || false;
+
             // Only update the boards on display if no search is active
-            if (!isSearchActive) setBoardsOnDisplay([...boardsOnDisplay, createdBoard.data])
-            setBoardsCache([...boardsCache, createdBoard.data])
+            if (!isSearchActive) setBoardsOnDisplay(empty ? [createdBoard.data] : [...boardsOnDisplay, createdBoard.data])
+            setBoardsCache(empty ? [createdBoard.data] : [...boardsCache, createdBoard.data])
         })
         .catch((error) => {console.log(error)})
 }
