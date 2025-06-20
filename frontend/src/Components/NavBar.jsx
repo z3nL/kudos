@@ -13,12 +13,15 @@ const NavBar = ({ toggleAddingBoard }) => {
     // Leverage a search content state to streamline continuous input handling
     const [searchContent, setSearchContent] = useState('');
 
-    // Account for a change in input and let useEffect handle the search
+    // Account for a change in input
     const handleSearchChange = (event) => {
         setSearchContent(event.target.value);
         event.preventDefault();
     }
-    useEffect( () => {
+
+    // Confirm search
+    const handleSubmit = (event) => {
+        event.preventDefault();
         if (searchContent != '') {
             setSearchActivity(true);
         }
@@ -26,7 +29,7 @@ const NavBar = ({ toggleAddingBoard }) => {
             setSearchActivity(false);
         }
         searchBoards(searchContent, setBoardsOnDisplay, boardsCache);
-    }, [searchContent])
+    }
 
     const handleClear = () => {
         setSearchContent('');
@@ -48,7 +51,7 @@ const NavBar = ({ toggleAddingBoard }) => {
         <>
         
         <section id="NavBar">
-            <form id="SearchBar" onSubmit={(event) => event.preventDefault()}>
+            <form id="SearchBar" onSubmit={handleSubmit}>
                 <input type="text" name="searchInput" value={searchContent} onChange={handleSearchChange} placeholder="Search for a board" />
                 <button type="submit">Search</button>
                 <button onClick={handleClear}>Clear</button>

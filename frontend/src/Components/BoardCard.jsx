@@ -26,7 +26,9 @@ const BoardCard = ({ boardID, title, category, author, desc }) => {
                 { author &&
                     <p className='boardCardContent'><b>Author: </b>{author}</p>
                 }
-                <p className='boardCardContent'><b>Description: </b>{desc}</p>
+                { desc &&
+                    <p className='boardCardContent'><b>Description: </b>{desc}</p>
+                }
                 <div className='boardCardButtons'>
                     <Link to={`/boards/${boardID}`}>
                         <button onClick={() => {setActiveBoardTitle(title); setActiveBoardID(boardID)}}>View Board</button>

@@ -50,11 +50,10 @@ export const addBoard = (newBoardData, boardsOnDisplay, setBoardsOnDisplay, isSe
 // An empty search just loads the pre-search cache
 export const searchBoards = (query, setBoardsOnDisplay, boardsCache) => {
     if (query != '') {
-        setBoardsOnDisplay( boardsCache.filter((board) => 
-            board.title.toLowerCase().includes(query) ||
-            board.author.toLowerCase().includes(query) ||
-            board.desc.toLowerCase().includes(query)
-        ));
+        const searchResults = boardsCache.filter((board) => 
+            board.title.toLowerCase().includes(query)
+        );
+        setBoardsOnDisplay ( searchResults.length ? searchResults : { empty: true, message: `No results for "${query}"` })
     }
     else {
         setBoardsOnDisplay(boardsCache);
@@ -71,21 +70,26 @@ const Options = {
 
 // Filters the displayed boards by provided option and updates the display as such
 export const filterBoards = (option, setBoardsOnDisplay, boardsCache) => {
+    let filterResults;
     switch (option) {
         case Options.RECENT:
-            setBoardsOnDisplay(boardsCache.toSorted((a, b) => b.boardID - a.boardID).slice(0, 6));
+            filterResults = boardsCache.toSorted((a, b) => b.boardID - a.boardID).slice(0, 6);
+            setBoardsOnDisplay(filterResults.length ? filterResults : {empty: true, message: "No cards to sort by recency! Try making one." })
             break;
 
         case Options.CELEBRATION:
-            setBoardsOnDisplay(boardsCache.filter((board) => board.category == "Celebration"));
+            filterResults = boardsCache.filter((board) => board.category == "Celebration");
+            setBoardsOnDisplay(filterResults.length ? filterResults : {empty: true, message: "No cards tagged 'Celebration'" })
             break;
 
         case Options.THANKYOU:
-            setBoardsOnDisplay(boardsCache.filter((board) => board.category == "Thank You"));
+            filterResults = boardsCache.filter((board) => board.category == "Thank You");
+            setBoardsOnDisplay(filterResults.length ? filterResults : {empty: true, message: "No cards tagged 'Thank You'" })
             break;
 
         case Options.INSPIRATION:
-            setBoardsOnDisplay(boardsCache.filter((board) => board.category == "Inspiration"));
+            filterResults = boardsCache.filter((board) => board.category == "Inspiration");
+            setBoardsOnDisplay(filterResults.length ? filterResults : {empty: true, message: "No cards tagged 'Inspiration'" })
             break;
 
         default:
