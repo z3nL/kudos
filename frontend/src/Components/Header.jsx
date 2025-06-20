@@ -7,7 +7,7 @@ const Header = () => {
 
         <Link to='/'>
         <header>
-            <img id="smiley" src="/assets/smiley.png" />
+            <img id="smiley" src="assets/smiley.png" />
             <h1 id="headerTet">Kudo Board</h1>
         </header>
         </Link>
