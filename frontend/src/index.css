@@ -75,13 +75,14 @@ input {
   border: 1px solid transparent;
   border-radius: 3px;
   background-color: var(--input-bg-color);
+  color: var(--foreground-color);
 }
 ::placeholder { color: var(--foreground-color);  }
 
 select {
   border: 1px solid transparent;
   border-radius: 3px;
-  background-color: #365e65;
-  color: white;
+  background-color: var(--input-bg-color);
+  color: var(--foreground-color);
 }
 option { color: var(--foreground-color);  }
