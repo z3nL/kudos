@@ -1,4 +1,5 @@
 const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000'
+// TODO Swap during testing const baseUrl = 'http://localhost:3000';
 
 const giphyKey = import.meta.env.VITE_GIPHY_API_KEY;
 

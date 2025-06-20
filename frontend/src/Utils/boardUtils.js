@@ -1,5 +1,5 @@
-// TODO UNCOMMENT WHEN PUSHING const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000'
-const baseUrl = 'http://localhost:3000';
+const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000'
+// TODO Swap during testing const baseUrl = 'http://localhost:3000';
 
 // Leverage axios to help with more complex requests
 import axios from 'axios'
