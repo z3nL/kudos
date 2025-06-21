@@ -137,6 +137,8 @@ Deployed Application (**required**): [Kudos Board Deployed Site](https://kudos-f
 
 <div style="position: relative; padding-bottom: 64.55089820359281%; height: 0;"><iframe src="https://www.loom.com/embed/d26b3857c08a48ad8b4a53afdc599bc9?sid=00d37c9c-018d-4476-80b3-a53cf79e25be" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
+https://www.loom.com/embed/d26b3857c08a48ad8b4a53afdc599bc9?sid=00d37c9c-018d-4476-80b3-a53cf79e25be
+
 ### Reflection
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
